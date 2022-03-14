@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/ListFragment">
+
+    <fragment
+        android:id="@+id/ListFragment"
+        android:name="ca.sfu.iat.todolist.fragments.ListFragment"
+        android:label="@string/to_do_list"
+        tools:layout="@layout/fragment_list">
+
+        <action
+            android:id="@+id/action_ListFragment_to_EditFragment"
+            app:destination="@id/EditFragment" />
+        <action
+            android:id="@+id/action_ListFragment_to_AddFragment"
+            app:destination="@id/AddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EditFragment"
+        android:name="ca.sfu.iat.todolist.fragments.EditFragment"
+        android:label="Edit Task"
+        tools:layout="@layout/fragment_edit">
+
+        <argument
+            android:name="item_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_EditFragment_to_AddFragment"
+            app:destination="@id/AddFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/AddFragment"
+        android:name="ca.sfu.iat.todolist.fragments.AddFragment"
+        android:label="Add Task"
+        tools:layout="@layout/fragment_add">
+
+        <argument
+            android:name="item_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_AddFragment_to_ListFragment"
+            app:destination="@id/ListFragment"
+            app:popUpTo="@id/ListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
